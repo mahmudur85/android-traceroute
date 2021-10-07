@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Traceroute</string>
+    <string name="host_name">www.google.com</string>
+    <string name="hint_host_name">T www.google.com</string>
+    <string name="bt_label_start_traceroute">Start Traceroute</string>
+</resources>
