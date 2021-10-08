@@ -18,7 +18,18 @@ implementation "com.synaptic-tools:traceroute:1.0.0"
 
 # Usages
 
-### Get the report in ViewModel:
+Use `TraceRoute.setCallback` method to get the report asynchronously
+
+```kotlin
+TraceRoute.setCallback {
+	success { ... }
+    update { text -> ... }
+    failed { code, reason -> ... }
+}
+TraceRoute.traceroute(hostName)
+```
+
+# ViewModel example implementation
 
 ```kotlin
 import com.synaptictools.traceroute.TraceRoute
@@ -69,16 +80,5 @@ class MyViewModel: ViewModel() {
         }
     }
 }
-```
-
-### Get the report asynchronously 
-
-```kotlin
-TraceRoute.setCallback {
-	success { ... }
-    update { text -> ... }
-    failed { code, reason -> ... }
-}
-TraceRoute.traceroute(hostName)
 ```
 
