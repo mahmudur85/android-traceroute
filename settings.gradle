@@ -1,11 +1,16 @@
-dependencyResolutionManagement {
+/*dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
         mavenCentral()
         jcenter() // Warning: this repository is going to shut down soon
+        plugins.withId("com.vanniktech.maven.publish") {
+            mavenPublish {
+                sonatypeHost = "S01"
+            }
+        }
     }
-}
+}*/
 rootProject.name = "Traceroute Sample"
 include ':app'
 include ':traceroutelib'

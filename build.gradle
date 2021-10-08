@@ -7,6 +7,9 @@ buildscript {
         compile_sdk_version = 30
         kotlin_version = '1.5.31'
         min_sdk_version = 24
+        build_tools_version = '30.0.2'
+        gradle_maven_publish_plugin = '0.18.0'
+        dokka_version = '1.5.30'
 
         // local variables (use def)
         def androidx_core_kts = '1.6.0'
@@ -147,15 +150,36 @@ buildscript {
 
     repositories {
         google()
-        mavenCentral()
         jcenter() // Warning: this repository is going to shut down soon
+        mavenCentral()
+        plugins.withId("com.vanniktech.maven.publish") {
+            mavenPublish {
+                sonatypeHost = "S01"
+            }
+        }
     }
     dependencies {
         classpath "com.android.tools.build:gradle:7.0.2"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
+        classpath "com.vanniktech:gradle-maven-publish-plugin:$gradle_maven_publish_plugin"
+        classpath "org.jetbrains.dokka:dokka-gradle-plugin:$dokka_version"
+
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter() // Warning: this repository is going to shut down soon
+        mavenCentral()
+    }
+    plugins.withId("com.vanniktech.maven.publish") {
+        mavenPublish {
+            sonatypeHost = "S01"
+        }
     }
 }
 
